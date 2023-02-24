@@ -1,0 +1,12 @@
+@layer base {
+    body {
+        @apply font-primary font-normal text-[15px] mx-auto;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+    }
+
+    input,
+    button {
+        @apply outline-none
+    }
+}
