@@ -1,9 +1,4 @@
 import React from 'react'
-
 export default function HomePage() {
-    return (
-        <div>
-            <h1>Home page</h1>
-        </div>
-    )
+    return <div className='h-[300px] bg-blue-400'></div>
 }

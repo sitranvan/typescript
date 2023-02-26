@@ -1,6 +1,6 @@
 @layer base {
     body {
-        @apply font-primary font-normal text-[15px] mx-auto;
+        @apply font-primary font-normal text-sm mx-auto;
         -webkit-font-smoothing: antialiased;
         -moz-osx-font-smoothing: grayscale;
     }
@@ -9,4 +9,25 @@
     button {
         @apply outline-none
     }
+}
+
+.text-gradient {
+    background: linear-gradient(135deg, #fa00ff, #00e0ff 50%, #fa00ff);
+    -webkit-background-clip: text;
+    background-clip: text;
+    background-size: 500%;
+    color: #0000;
+}
+
+.slider-container {
+    display: flex;
+    overflow-x: scroll;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    /* hỗ trợ cho iOS */
+}
+
+.slider-item {
+    flex: 0 0 100%;
+    scroll-snap-align: center;
 }
