@@ -31,3 +31,27 @@
     flex: 0 0 100%;
     scroll-snap-align: center;
 }
+
+.grid-photo {
+    grid-column-gap: 24px;
+    align-items: start;
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+
+    &-list {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr);
+        row-gap: 24px;
+    }
+
+    &-content {
+        opacity: 0;
+        visibility: hidden;
+        transition: all linear 0.125s;
+    }
+
+    &-group:hover .grid-photo-content {
+        opacity: 1;
+        visibility: visible;
+    }
+}

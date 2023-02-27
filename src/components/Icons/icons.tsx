@@ -1,5 +1,9 @@
 import React from 'react'
 
+export interface FillProps {
+    fill?: string
+}
+
 export const LogoIcon: React.FC = () => (
     <svg
         width={32}
@@ -56,5 +60,49 @@ export const TrendingIcon: React.FC = () => (
     <svg width={20} height={20} className='ij2OU' fill='#767676' viewBox='0 0 24 24' version='1.1' aria-hidden='false'>
         <desc lang='en-US'>A trend sign</desc>
         <path d='m16 6 2.29 2.29-4.88 4.88-4-4L2 16.59 3.41 18l6-6 4 4 6.3-6.29L22 12V6h-6Z' />
+    </svg>
+)
+
+export const HeartIcon: React.FC = ({ fill }: FillProps) => (
+    <svg
+        width={16}
+        height={16}
+        className='TrVF8'
+        fill={fill || '#555'}
+        viewBox='0 0 24 24'
+        version='1.1'
+        aria-hidden='false'
+    >
+        <desc lang='en-US'>A heart</desc>
+        <path d='M21.424 4.594c-2.101-2.125-5.603-2.125-7.804 0l-1.601 1.619-1.601-1.62c-2.101-2.124-5.603-2.124-7.804 0-2.202 2.126-2.102 5.668 0 7.894L12.019 22l9.405-9.513a5.73 5.73 0 0 0 0-7.893Z' />
+    </svg>
+)
+
+export const PlusIcon: React.FC = () => (
+    <svg width={16} height={16} className='utUL6' fill='#555' viewBox='0 0 24 24' version='1.1' aria-hidden='false'>
+        <desc lang='en-US'>A plus sign</desc>
+        <path d='M21.8 10.5h-8.3V2.2h-3v8.3H2.2v3h8.3v8.3h3v-8.3h8.3z'></path>
+    </svg>
+)
+
+export const DownIcon: React.FC = () => (
+    <svg width={16} height={16} className='c_c7b' fill='#555' viewBox='0 0 24 24' version='1.1' aria-hidden='false'>
+        <desc lang='en-US'>Arrow pointing down</desc>
+        <path d='m19.35 11.625-5.85 5.4V1.5h-3v15.525l-5.85-5.4-2.025 2.25L12 22.425l9.375-8.55-2.025-2.25Z' />
+    </svg>
+)
+
+export const TickIcon: React.FC = () => (
+    <svg
+        width={14}
+        height={14}
+        className='nD8iJ'
+        fill='#ffffffcc'
+        viewBox='0 0 24 24'
+        version='1.1'
+        aria-hidden='false'
+    >
+        <desc lang='en-US'>A checkmark inside of a circle</desc>
+        <path d='M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10 10-4.5 10-10S17.5 2 12 2zm-1.9 14.7L6 12.6l1.5-1.5 2.6 2.6 6-6.1 1.5 1.5-7.5 7.6z' />
     </svg>
 )

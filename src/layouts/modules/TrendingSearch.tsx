@@ -1,4 +1,3 @@
-import { Fragment } from 'react'
 import { TrendingIcon } from '../../components/Icons'
 
 export interface TrendingSearchProps {}
