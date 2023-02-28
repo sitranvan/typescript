@@ -5,11 +5,10 @@ import { unsplashApi } from '../../api/unsplashApi'
 import Button from '../../components/Button'
 import useGetTopics from '../../hooks/useGetTopics'
 import { ListPhoto, Topics } from '../../types'
-import PhotoList from '../HomePage/modules/PhotoList'
-import Slider from '../HomePage/modules/Slider'
-import TitleSlider from '../HomePage/modules/TitleSlider'
-
 import PuffLoader from 'react-spinners/PuffLoader'
+import Slider from '../../components/Slider'
+import TitleSlider from '../../components/TitleSlider'
+import PhotoList from '../../components/PhotoList'
 export default function TopicsPage() {
     const [photosTopic, setPhotosTopic] = useState<ListPhoto[]>([])
     const [topicInfo, setTopicInfo] = useState<Topics>()

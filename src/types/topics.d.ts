@@ -12,17 +12,6 @@ export interface Topics {
         urls: Urls
     }
     preview_photos: {
-        blur_hash: string
-        created_at: string
-        id: string
-        updated_at: string
-        urls: {
-            full: string
-            raw: string
-            regular: string
-            small: string
-            small_s3: string
-            thumb: string
-        }
+        urls: Urls
     }[]
 }

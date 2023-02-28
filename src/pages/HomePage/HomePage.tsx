@@ -4,10 +4,11 @@ import { unsplashApi } from '../../api/unsplashApi'
 import Search from '../../components/Search'
 import { ListPhoto } from '../../types'
 import Banner from './modules/Banner'
-import PhotoList from './modules/PhotoList'
-import Slider from './modules/Slider'
-import TitleSlider from './modules/TitleSlider'
+
 import { PuffLoader } from 'react-spinners'
+import Slider from '../../components/Slider'
+import TitleSlider from '../../components/TitleSlider'
+import PhotoList from '../../components/PhotoList'
 
 export default function HomePage() {
     const [photos, setPhotos] = useState<ListPhoto[]>([])

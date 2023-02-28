@@ -1,4 +1,4 @@
-import TextInfoUser from './TextInfoUser'
+import TextInfoUser from '../../pages/HomePage/modules/TextInfoUser'
 
 export interface SliderProps {
     children: JSX.Element

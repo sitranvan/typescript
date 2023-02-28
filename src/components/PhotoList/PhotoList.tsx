@@ -1,6 +1,7 @@
 import { Fragment } from 'react'
-import PhotoItem from '../../../components/PhotoItem/PhotoItem'
-import { ListPhoto } from '../../../types'
+import { ListPhoto } from '../../types'
+import PhotoItem from '../PhotoItem/PhotoItem'
+
 export interface PhotoListProps {
     photos: ListPhoto[]
 }
