@@ -1,12 +1,13 @@
-import { useEffect, useState } from 'react'
+import { Fragment, useEffect, useState } from 'react'
+import InfiniteScroll from 'react-infinite-scroll-component'
 import { unsplashApi } from '../../api/unsplashApi'
 import Search from '../../components/Search'
 import { ListPhoto } from '../../types'
 import Banner from './modules/Banner'
 import PhotoList from './modules/PhotoList'
-import TextInfo from './modules/TextInfo'
+import Slider from './modules/Slider'
 import TitleSlider from './modules/TitleSlider'
-import InfiniteScroll from 'react-infinite-scroll-component'
+import { PuffLoader } from 'react-spinners'
 
 export default function HomePage() {
     const [photos, setPhotos] = useState<ListPhoto[]>([])
@@ -18,11 +19,15 @@ export default function HomePage() {
     }
 
     const fetchData = async () => {
-        const data = await unsplashApi.getList({ per_page: 30, page })
-        setPhotos([...photos, ...data.data])
-        setPage(page + 1)
+        try {
+            const data = await unsplashApi.getList({ page })
+            const newPhoto = [...photos, ...data.data]
+            setPhotos(newPhoto)
+            setPage(page + 1)
+        } catch (error) {
+            console.log(error)
+        }
     }
-
     useEffect(() => {
         fetchData()
         // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -30,22 +35,20 @@ export default function HomePage() {
 
     return (
         <div className=''>
-            <div
-                style={{
-                    backgroundImage: `url('https://images.unsplash.com/photo-1674574124649-778f9afc0e9c?crop=entropy&cs=tinysrgb&fm=jpg&ixid=Mnw0MTQ0MDZ8MXwxfGFsbHwxfHx8fHx8Mnx8MTY3NzQ5MzA1OQ&ixlib=rb-4.0.3&q=80')`,
-                }}
-                className='h-[565px] bg-cover bg-no-repeat relative '
-            >
-                <div className='bg-black11 absolute inset-0 bg-opacity-50'></div>
-                <div className='top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 absolute w-2/3 px-24'>
+            <Slider sliderImg={'./slider.avif'} photoBy='Patryk Wojcieszak'>
+                <Fragment>
                     <TitleSlider />
                     <Search className='h-[54px]' onSubmitSearch={handleSearchValue} />
-                </div>
-                <TextInfo />
-            </div>
+                </Fragment>
+            </Slider>
             <div className='w-[1280px] mx-auto px-8'>
                 <Banner />
-                <InfiniteScroll dataLength={photos.length} next={fetchData} hasMore={true} loader={<h4>Loading...</h4>}>
+                <InfiniteScroll
+                    dataLength={photos.length}
+                    next={fetchData}
+                    hasMore={true}
+                    loader={<PuffLoader className='mx-auto' color='#767676' />}
+                >
                     <div className='grid-photo'>
                         <PhotoList photos={photos} />
                     </div>

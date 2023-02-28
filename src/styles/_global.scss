@@ -55,3 +55,11 @@
         visibility: visible;
     }
 }
+
+.active {
+    @apply border-b-[2px] border-black11
+}
+
+.infinite-scroll-component::-webkit-scrollbar {
+    display: none;
+}

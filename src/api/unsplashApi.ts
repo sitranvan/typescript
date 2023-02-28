@@ -23,8 +23,8 @@ export const unsplashApi = {
         const response = await unsplashRequest.get(url, { params })
         return response
     },
-    getPhotoTocpic: async (params: ListParams): Promise<ListResponseData<ListPhoto>> => {
-        const url: string = `/topics/${params.id}/photos`
+    getPhotosTocpic: async (slug: string, params: ListParams): Promise<ListResponseData<ListPhoto>> => {
+        const url: string = `/topics/${slug}/photos`
         const response = await unsplashRequest.get(url, { params })
         return response
     },

@@ -1,8 +1,12 @@
-export default function TextInfo() {
+export interface TextInfoUserProps {
+    photoBy: string
+}
+
+export default function TextInfoUser({ photoBy }: TextInfoUserProps) {
     return (
         <div className='text-gray8c text-[13px] flex items-end absolute bottom-5 justify-between w-full px-5'>
             <p className='flex items-center gap-x-1'>
-                <span className='text-whiteCc'>Photo</span> by <span className='text-whiteCc'>Rajat Kashyap</span>
+                <span className='text-whiteCc'>Photo</span> by <span className='text-whiteCc'>{photoBy}</span>
             </p>
             <p className='flex items-center gap-x-1'>
                 Read more about the <span className='text-whiteCc'>Unsplash License</span>

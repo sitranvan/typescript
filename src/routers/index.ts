@@ -9,7 +9,7 @@ export const mainRouters: Routers[] = [
         component: HomePage,
     },
     {
-        path: '/t/:slugs',
+        path: '/t/:slug',
         component: TopicsPage,
     },
     {

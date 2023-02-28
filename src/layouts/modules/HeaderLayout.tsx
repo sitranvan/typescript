@@ -2,7 +2,7 @@ import { FaBars } from 'react-icons/fa'
 import Button from '../../components/Button'
 import { BellIcon, LogoIcon } from '../../components/Icons'
 import Search from '../../components/Search'
-import Topics from './Topics'
+import TopicsTitle from './TopicsTitle'
 export default function Header() {
     const handleSearchValue = (value: string) => {
         // call api
@@ -46,7 +46,7 @@ export default function Header() {
                 </div>
             </div>
             <div className='flex items-center gap-x-6 shadow-[0_4px_12px_#00000014_0_0_1px_#0100001a;]'>
-                <Topics />
+                <TopicsTitle />
             </div>
         </div>
     )

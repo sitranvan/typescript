@@ -8,4 +8,5 @@ export interface Urls {
     full: string
     regular: string
     small: string
+    thumb: string
 }

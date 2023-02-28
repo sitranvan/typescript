@@ -8,5 +8,6 @@ export interface User {
     total_likes: number
     total_photos: number
     total_collections: number
+    for_hire: boolean
     profile_image: ProfileImage
 }

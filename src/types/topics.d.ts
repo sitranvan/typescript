@@ -1,4 +1,5 @@
-import { Urls } from './image'
+import { Urls } from './image.d'
+import { User } from './user.d'
 
 export interface Topics {
     id: string
@@ -6,5 +7,22 @@ export interface Topics {
     title: string
     description: string
     total_photos: number
-    preview_photos: Urls
+    cover_photo: {
+        user: User
+        urls: Urls
+    }
+    preview_photos: {
+        blur_hash: string
+        created_at: string
+        id: string
+        updated_at: string
+        urls: {
+            full: string
+            raw: string
+            regular: string
+            small: string
+            small_s3: string
+            thumb: string
+        }
+    }[]
 }

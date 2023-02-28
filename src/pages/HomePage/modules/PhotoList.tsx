@@ -1,8 +1,7 @@
 import { Fragment } from 'react'
 import PhotoItem from '../../../components/PhotoItem/PhotoItem'
 import { ListPhoto } from '../../../types'
-
-interface PhotoListProps {
+export interface PhotoListProps {
     photos: ListPhoto[]
 }
 
@@ -16,13 +15,13 @@ export default function PhotoList({ photos }: PhotoListProps) {
 
     // Hiển thị các mảng ListPhoto lên giao diện
     let keyCount = 0
-    const photoGrids = photoChunks.map((chunk: ListPhoto[]) => (
+    const photoList = photoChunks.map((chunk: ListPhoto[]) => (
         <div key={`chunk_${keyCount++}`} className='grid-photo-list'>
             {chunk.map((photo) => (
-                <PhotoItem key={`photo_${keyCount++}`} photo={photo} />
+                <PhotoItem key={photo.id} photo={photo} />
             ))}
         </div>
     ))
 
-    return <>{photoGrids}</>
+    return <Fragment>{photoList}</Fragment>
 }
