@@ -76,7 +76,7 @@ export default function TopicsPage() {
                     dataLength={photosTopic.length}
                     next={fetchData}
                     hasMore={true}
-                    loader={<PuffLoader className='mx-auto' color='#767676' />}
+                    loader={<PuffLoader className='mx-auto mt-5' color='#767676' />}
                 >
                     <div className='grid-photo'>
                         <PhotoList photos={photosTopic} />

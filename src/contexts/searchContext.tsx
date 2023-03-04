@@ -9,6 +9,7 @@ export interface SearchProviderProps {
 
 export interface Context {
     value: string
+    loading: boolean
     setValue: (value: string) => void
     handleSubmit: (value: any) => Promise<void>
     fetchPhotos: () => Promise<void>
@@ -31,31 +32,43 @@ export default function SearchProvider({ children }: SearchProviderProps) {
     const [photos, setPhotos] = useState<ListPhoto[]>([])
     const [collections, setCollections] = useState<Collections[]>([])
     const [users, setUsers] = useState<UserPreview[]>([])
+    const [loading, setLoading] = useState<boolean>(false)
     const [totals, setTotals] = useState<TotalApi>({
         totalPhotos: 0,
         totalCollections: 0,
         totalUsers: 0,
     })
     const handleSubmit = async (e?: React.ChangeEvent<HTMLFormElement>) => {
-        e?.preventDefault()
-        // api search photos
-        const dataPhotos = await unsplashApi.searchPhotos({ query: value || keyword, per_page: 6, page: 1 })
-        setPhotos(dataPhotos.results)
-        // api search collections
-        const dataCollections = await unsplashApi.searchCollections({ query: value || keyword, per_page: 6, page: 1 })
-        setCollections(dataCollections.results)
-        // api get a collection’s photos
-        // const data = await unsplashApi.getCollectionsPhotos('599017', {})
-        // api search users
-        const dataUser = await unsplashApi.searchUsers({ query: value || keyword, page: 1, per_page: 6 })
-        setUsers(dataUser.results)
+        try {
+            e?.preventDefault()
+            setLoading(true)
+            // api search photos
+            const dataPhotos = await unsplashApi.searchPhotos({ query: value || keyword, per_page: 6, page: 1 })
+            setPhotos(dataPhotos.results)
+            // api search collections
+            const dataCollections = await unsplashApi.searchCollections({
+                query: value || keyword,
+                per_page: 6,
+                page: 1,
+            })
+            setCollections(dataCollections.results)
 
-        const newTotal: TotalApi = {
-            totalPhotos: dataPhotos.total || 0,
-            totalCollections: dataCollections.total || 0,
-            totalUsers: dataUser.total || 0,
+            // api get a collection’s photos
+            // const data = await unsplashApi.getCollectionsPhotos('599017', {})
+            // api search users
+            const dataUser = await unsplashApi.searchUsers({ query: value || keyword, page: 1, per_page: 6 })
+            setUsers(dataUser.results)
+
+            const newTotal: TotalApi = {
+                totalPhotos: dataPhotos.total || 0,
+                totalCollections: dataCollections.total || 0,
+                totalUsers: dataUser.total || 0,
+            }
+            setTotals(newTotal)
+            setLoading(false)
+        } catch (error) {
+            console.log(error)
         }
-        setTotals(newTotal)
     }
 
     const fetchPhotos = async () => {
@@ -80,14 +93,16 @@ export default function SearchProvider({ children }: SearchProviderProps) {
         setUsers(newUsers)
         setPageUsers(pageUsers + 1)
     }
+
     useEffect(() => {
         if (!keyword) return
         handleSubmit()
         // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [])
+    }, [keyword])
 
     const values: Context = {
         value,
+        loading,
         setValue,
         handleSubmit,
         totals,

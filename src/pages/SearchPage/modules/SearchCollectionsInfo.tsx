@@ -1,3 +1,6 @@
+import { useContext } from 'react'
+import { useNavigate } from 'react-router-dom'
+import { Context, SearchContext } from '../../../contexts/searchContext'
 import { Collections } from '../../../types'
 
 export interface SearchCollectionsInfoProps {
@@ -5,6 +8,10 @@ export interface SearchCollectionsInfoProps {
 }
 
 export default function SearchCollectionsInfo({ collection }: SearchCollectionsInfoProps) {
+    const navigate = useNavigate()
+    const handleSearchTags = (title: string) => {
+        navigate(`/s/photos/${title}`)
+    }
     return (
         <div className='mt-4'>
             <h2 className='text-xl font-semibold text-black11 capitalize'>{collection.title}</h2>
@@ -19,14 +26,18 @@ export default function SearchCollectionsInfo({ collection }: SearchCollectionsI
             </div>
             <div className='flex items-center gap-x-2'>
                 {collection.tags.length > 0 &&
-                    collection.tags.slice(0, 3).map((tag) => (
-                        <span
-                            key={tag.title}
-                            className='text-gray76 leading-[26px] px-2 bg-grayEe inline-block rounded-[2px] capitalize'
-                        >
-                            {tag.title}
-                        </span>
-                    ))}
+                    collection.tags
+                        .filter((tag) => tag.type === 'search')
+                        .slice(0, 4)
+                        .map((tag) => (
+                            <span
+                                onClick={() => handleSearchTags(tag.title)}
+                                key={tag.title}
+                                className='text-gray76 leading-[26px] px-2 bg-grayEe inline-block rounded-[2px] transition-all capitalize cursor-pointer hover:bg-grayD1 hover:text-black11'
+                            >
+                                {tag.title}
+                            </span>
+                        ))}
             </div>
         </div>
     )
