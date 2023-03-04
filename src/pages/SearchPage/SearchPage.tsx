@@ -3,7 +3,7 @@ import Filters from './modules/Filters'
 import TotalResults from './modules/TotalResults'
 
 export interface SearchPageProps {
-    children: JSX.Element
+    children: React.ReactNode
 }
 
 export default function SearchPage({ children }: SearchPageProps) {

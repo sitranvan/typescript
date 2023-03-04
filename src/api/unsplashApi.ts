@@ -1,4 +1,4 @@
-import { Collections, ListPhoto, Topics, User } from '../types'
+import { Collections, ListPhoto, Topics, UserPreview } from '../types'
 import { ListParams, ListResponseData, ListResponseResults } from './../types/api'
 import { unsplashRequest } from './../utils/httpRequest'
 
@@ -23,7 +23,7 @@ export const unsplashApi = {
         const response = await unsplashRequest.get(url, { params })
         return response.data
     },
-    searchUsers: async (params: ListParams): Promise<ListResponseResults<User>> => {
+    searchUsers: async (params: ListParams): Promise<ListResponseResults<UserPreview>> => {
         const url: string = '/search/users'
         const response = await unsplashRequest.get(url, { params })
         return response.data
