@@ -1,4 +1,4 @@
-import { ListPhoto, Topics } from '../types'
+import { Collections, ListPhoto, Topics, User } from '../types'
 import { ListParams, ListResponseData, ListResponseResults } from './../types/api'
 import { unsplashRequest } from './../utils/httpRequest'
 
@@ -13,8 +13,18 @@ export const unsplashApi = {
         const response = await unsplashRequest.get(url)
         return response.data
     },
-    searchPhoto: async (params: ListParams): Promise<ListResponseResults<ListPhoto>> => {
+    searchPhotos: async (params: ListParams): Promise<ListResponseResults<ListPhoto>> => {
         const url: string = '/search/photos'
+        const response = await unsplashRequest.get(url, { params })
+        return response.data
+    },
+    searchCollections: async (params: ListParams): Promise<ListResponseResults<Collections>> => {
+        const url: string = '/search/collections'
+        const response = await unsplashRequest.get(url, { params })
+        return response.data
+    },
+    searchUsers: async (params: ListParams): Promise<ListResponseResults<User>> => {
+        const url: string = '/search/users'
         const response = await unsplashRequest.get(url, { params })
         return response.data
     },
@@ -25,6 +35,11 @@ export const unsplashApi = {
     },
     getPhotosTocpic: async (slug: string, params: ListParams): Promise<ListResponseData<ListPhoto>> => {
         const url: string = `/topics/${slug}/photos`
+        const response = await unsplashRequest.get(url, { params })
+        return response
+    },
+    getCollectionsPhotos: async (id: string, params: ListParams): Promise<ListResponseData<ListPhoto>> => {
+        const url = `/collections/${id}/photos`
         const response = await unsplashRequest.get(url, { params })
         return response
     },

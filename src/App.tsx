@@ -1,17 +1,8 @@
-import { Route, Routes } from 'react-router-dom'
-import MainLayout from './layouts/MainLayout'
-import { mainRouters } from './routers'
+import { RouterProvider } from 'react-router-dom'
+import { router } from './router'
+
 function App() {
-    return (
-        <Routes>
-            <Route element={<MainLayout />}>
-                {mainRouters.map((router) => {
-                    const Page = router.component
-                    return <Route key={router.path} path={router.path} element={<Page />} />
-                })}
-            </Route>
-        </Routes>
-    )
+    return <RouterProvider router={router} />
 }
 
 export default App

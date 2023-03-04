@@ -1,4 +1,3 @@
-import { Fragment } from 'react'
 import { NavLink } from 'react-router-dom'
 import { NextIcon, PrevIcon } from '../../components/Icons'
 import useGetTopics from '../../hooks/useGetTopics'
@@ -9,7 +8,7 @@ export default function TopicsTitle(props: TopicsProps) {
     const topics = useGetTopics()
 
     return (
-        <Fragment>
+        <div className='flex items-center gap-x-6 shadow-[0_4px_12px_#00000014_0_0_1px_#0100001a]'>
             <div className='text-gray76 flex items-center gap-x-6 h-[56px]'>
                 <NavLink to='/' className='cursor-pointer hover:text-black11 h-full flex items-center'>
                     Editorial
@@ -36,6 +35,6 @@ export default function TopicsTitle(props: TopicsProps) {
             <button className='text-2xl '>
                 <NextIcon />
             </button>
-        </Fragment>
+        </div>
     )
 }

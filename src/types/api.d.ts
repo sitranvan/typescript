@@ -5,12 +5,20 @@ export interface ApiConfig {
 
 export interface ListResponseData<T> {
     data: T[]
+    total?: number
 }
 
 export interface ListResponseResults<T> {
+    [x: string]: any
     results: T[]
+    total?: number
 }
 
+export interface TotalApi {
+    totalPhotos: number
+    totalCollections: number
+    totalUsers: number
+}
 export interface ListParams {
     per_page?: number
     order_by?: string

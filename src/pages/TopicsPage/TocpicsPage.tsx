@@ -1,18 +1,18 @@
 import { Fragment, useEffect, useState } from 'react'
 import InfiniteScroll from 'react-infinite-scroll-component'
-import { useParams } from 'react-router-dom'
-import { unsplashApi } from '../../api/unsplashApi'
-import Button from '../../components/Button'
-import useGetTopics from '../../hooks/useGetTopics'
 import { ListPhoto, Topics } from '../../types'
+import { unsplashApi } from '../../api/unsplashApi'
+import { useParams } from 'react-router-dom'
+import Button from '../../components/Button'
+import PhotoList from '../../components/PhotoList'
 import PuffLoader from 'react-spinners/PuffLoader'
 import Slider from '../../components/Slider'
 import TitleSlider from '../../components/TitleSlider'
-import PhotoList from '../../components/PhotoList'
+import useGetTopics from '../../hooks/useGetTopics'
 export default function TopicsPage() {
     const [photosTopic, setPhotosTopic] = useState<ListPhoto[]>([])
     const [topicInfo, setTopicInfo] = useState<Topics>()
-    const [page, setPage] = useState<number>(1)
+    const [page, setPage] = useState<number>(2)
     const topics = useGetTopics()
     const { slug } = useParams<{ slug: string }>()
 
@@ -32,7 +32,7 @@ export default function TopicsPage() {
             try {
                 setPhotosTopic([])
                 setPage(1)
-                const data = await unsplashApi.getPhotosTocpic(slug!, { per_page: 6 })
+                const data = await unsplashApi.getPhotosTocpic(slug!, { per_page: 6, page: 1 })
                 const newPhoto = data.data
                 setPhotosTopic(newPhoto)
             } catch (error) {

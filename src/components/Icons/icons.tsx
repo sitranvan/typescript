@@ -106,3 +106,24 @@ export const TickIcon: React.FC = () => (
         <path d='M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10 10-4.5 10-10S17.5 2 12 2zm-1.9 14.7L6 12.6l1.5-1.5 2.6 2.6 6-6.1 1.5 1.5-7.5 7.6z' />
     </svg>
 )
+
+export const PhotosIcon: React.FC = () => (
+    <svg width={18} height={18} className='Gdg38' viewBox='0 0 24 24' version='1.1' aria-hidden='false'>
+        <desc lang='en-US'>A photo</desc>
+        <path d='M20 3H4c-.6 0-1 .4-1 1v16c0 .6.4 1 1 1h16c.6 0 1-.4 1-1V4c0-.6-.4-1-1-1ZM5 18l3.5-4.5 2.5 3 3.5-4.5 4.5 6H5Z' />
+    </svg>
+)
+
+export const CollectionsIcon: React.FC = () => (
+    <svg width={18} height={18} className='Gdg38' fill='#d1d1d1' viewBox='0 0 24 24' version='1.1' aria-hidden='false'>
+        <desc lang='en-US'>A stack of photos</desc>
+        <path d='M2 6H0v5h.01L0 20c0 1.1.9 2 2 2h18v-2H2V6Zm20-2h-8l-2-2H6c-1.1 0-1.99.9-1.99 2L4 16c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2ZM7 15l4.5-6 3.5 4.51 2.5-3.01L21 15H7Z' />
+    </svg>
+)
+
+export const UsersIcon: React.FC = () => (
+    <svg width={18} height={18} className='Gdg38' fill='#d1d1d1' viewBox='0 0 24 24' version='1.1' aria-hidden='false'>
+        <desc lang='en-US'>A group of people</desc>
+        <path d='M23 17v3h-4v-3c0-1.7-1-2.9-2.3-3.9 2.7.4 6.3 1.7 6.3 3.9ZM9 12c2.2 0 4-1.8 4-4s-1.8-4-4-4-4 1.8-4 4 1.8 4 4 4Zm6 0c2.2 0 4-1.8 4-4s-1.8-4-4-4c-.5 0-.9.1-1.3.2C14.5 5.3 15 6.6 15 8s-.5 2.7-1.3 3.8c.4.1.8.2 1.3.2Zm-6 1c-2.7 0-8 1.3-8 4v3h16v-3c0-2.7-5.3-4-8-4Z' />
+    </svg>
+)

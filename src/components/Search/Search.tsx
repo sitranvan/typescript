@@ -1,31 +1,32 @@
-import React, { useState } from 'react'
+import React, { useContext } from 'react'
 import { BiSearch } from 'react-icons/bi'
 import { MdOutlineClear } from 'react-icons/md'
+import { Context, SearchContext } from '../../contexts/searchContext'
 import { VisualSearch } from '../Icons'
+import { useNavigate, useParams } from 'react-router-dom'
 
 export interface SearchProps {
-    onSubmitSearch: (value: string) => void
     className?: string
     rounded?: 'full'
 }
 
-export default function Search({ onSubmitSearch, className, rounded }: SearchProps) {
-    const [valueSearch, setValueSearch] = useState<string>('')
-
+export default function Search({ className, rounded }: SearchProps) {
+    const { value, setValue, handleSubmit }: Context = useContext(SearchContext)
+    const navigate = useNavigate()
     const handleChangeSearch = (e: React.ChangeEvent<HTMLInputElement>) => {
-        setValueSearch(e.target.value)
+        setValue(e.target.value)
     }
     const handleClearInput = () => {
-        setValueSearch('')
+        setValue('')
+    }
+    const handleSubmitForm = (e: React.ChangeEvent<HTMLFormElement>) => {
+        handleSubmit(e)
+        navigate(`/s/photos/${value}`)
     }
 
-    const handleSubmit = (e: React.ChangeEvent<HTMLFormElement>) => {
-        e.preventDefault()
-        onSubmitSearch(valueSearch)
-    }
     return (
         <form
-            onSubmit={handleSubmit}
+            onSubmit={handleSubmitForm}
             className={`flex items-center relative w-full ${rounded ? 'rounded-full' : 'rounded'} h-[40px] ${className}
             }]`}
         >
@@ -33,7 +34,7 @@ export default function Search({ onSubmitSearch, className, rounded }: SearchPro
                 <BiSearch />
             </button>
             <input
-                value={valueSearch}
+                value={value}
                 onChange={handleChangeSearch}
                 type='text'
                 placeholder='Search high-resolution images'
@@ -42,7 +43,7 @@ export default function Search({ onSubmitSearch, className, rounded }: SearchPro
             />
 
             <div className='flex items-center gap-x-3 absolute right-0 mr-5'>
-                {valueSearch.trim() && (
+                {value.trim() && (
                     <button className='text-gray76 text-[15px]' onClick={handleClearInput}>
                         <MdOutlineClear />
                     </button>

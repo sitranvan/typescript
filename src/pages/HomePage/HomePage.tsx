@@ -1,23 +1,17 @@
 import { Fragment, useEffect, useState } from 'react'
-import InfiniteScroll from 'react-infinite-scroll-component'
-import { unsplashApi } from '../../api/unsplashApi'
-import Search from '../../components/Search'
 import { ListPhoto } from '../../types'
-import Banner from './modules/Banner'
-
 import { PuffLoader } from 'react-spinners'
+import { unsplashApi } from '../../api/unsplashApi'
+import Banner from './modules/Banner'
+import InfiniteScroll from 'react-infinite-scroll-component'
+import PhotoList from '../../components/PhotoList'
+import Search from '../../components/Search'
 import Slider from '../../components/Slider'
 import TitleSlider from '../../components/TitleSlider'
-import PhotoList from '../../components/PhotoList'
 
 export default function HomePage() {
     const [photos, setPhotos] = useState<ListPhoto[]>([])
     const [page, setPage] = useState<number>(1)
-
-    const handleSearchValue = (value: string) => {
-        // call api
-        console.log(value)
-    }
 
     const fetchData = async () => {
         try {
@@ -39,7 +33,7 @@ export default function HomePage() {
             <Slider sliderImg={'./slider.avif'} photoBy='Patryk Wojcieszak'>
                 <Fragment>
                     <TitleSlider />
-                    <Search className='h-[54px]' onSubmitSearch={handleSearchValue} />
+                    <Search className='h-[54px]' />
                 </Fragment>
             </Slider>
             <div className='w-[1280px] mx-auto px-8'>

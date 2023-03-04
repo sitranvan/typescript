@@ -11,7 +11,7 @@ export interface PhotoItemProps {
 export default function PhotoItem({ photo }: PhotoItemProps) {
     return (
         <div className='relative grid-photo-group cursor-pointer'>
-            <img src={photo.urls.small} alt='' className='h-full' />
+            <img src={photo.urls.small} alt='' className='h-full w-full' />
             <div className='absolute inset-0 bg-black11 bg-opacity-30 flex flex-col justify-between grid-photo-content'>
                 <div className='flex items-center gap-x-2 justify-end m-4'>
                     <ButtonActions>

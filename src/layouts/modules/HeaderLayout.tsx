@@ -2,22 +2,23 @@ import { FaBars } from 'react-icons/fa'
 import Button from '../../components/Button'
 import { BellIcon, LogoIcon } from '../../components/Icons'
 import Search from '../../components/Search'
-import TopicsTitle from './TopicsTitle'
-export default function Header() {
-    const handleSearchValue = (value: string) => {
-        // call api
-        console.log(value)
-    }
+import { NavLink } from 'react-router-dom'
+
+export interface HeaderLayoutProps {
+    children?: JSX.Element
+}
+
+export default function HeaderLayout({ children }: HeaderLayoutProps) {
     return (
         <div className='px-6 bg-white '>
             <div className='flex items-center justify-between gap-x-10 py-3'>
                 {/* Logo */}
-                <div className='flex items-center'>
+                <NavLink to='/' className='flex items-center cursor-pointer'>
                     <LogoIcon />
-                </div>
+                </NavLink>
                 {/* Center */}
                 <div className='flex items-center flex-1 w-full justify-between '>
-                    <Search rounded='full' onSubmitSearch={handleSearchValue} />
+                    <Search rounded='full' />
 
                     <div className='flex items-center justify-center flex-shrink-0 ml-6 gap-x-6'>
                         <div className='flex items-center font-medium text-gray76 gap-x-6'>
@@ -45,9 +46,7 @@ export default function Header() {
                     </button>
                 </div>
             </div>
-            <div className='flex items-center gap-x-6 shadow-[0_4px_12px_#00000014_0_0_1px_#0100001a;]'>
-                <TopicsTitle />
-            </div>
+            {children}
         </div>
     )
 }
