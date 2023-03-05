@@ -1,10 +1,10 @@
-import { Collections } from '../../../types'
+import { Collections } from '../../types'
 
-export interface SearchCollectionsPreviewProps {
+export interface CollectionsPreviewProps {
     collection: Collections
 }
 
-export default function SearchCollectionsPreview({ collection }: SearchCollectionsPreviewProps) {
+export default function CollectionsPreview({ collection }: CollectionsPreviewProps) {
     return (
         <div className='h-[288px] flex gap-x-1 hover:opacity-80 transition-all cursor-pointer'>
             <div className='w-full'>

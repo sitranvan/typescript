@@ -3,7 +3,7 @@ import InfiniteScroll from 'react-infinite-scroll-component'
 import { PuffLoader } from 'react-spinners'
 import { Context, SearchContext } from '../../../contexts/searchContext'
 import SearchPage from '../SearchPage'
-import PhotoListSekeleton from './PhotoListSekeleton'
+import PhotoList from '../../../components/PhotoList'
 
 export interface SearchPhotosProps {}
 
@@ -19,7 +19,7 @@ export default function SearchPhotos(props: SearchPhotosProps) {
                 loader={<PuffLoader className='mx-auto mt-5' color='#767676' />}
             >
                 <div className='grid-photo'>
-                    <PhotoListSekeleton photos={photos} />
+                    <PhotoList photos={photos} loading={loading} />
                 </div>
             </InfiniteScroll>
         </SearchPage>

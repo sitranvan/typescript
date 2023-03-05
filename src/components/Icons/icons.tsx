@@ -91,13 +91,13 @@ export const DownIcon: React.FC = () => (
         <path d='m19.35 11.625-5.85 5.4V1.5h-3v15.525l-5.85-5.4-2.025 2.25L12 22.425l9.375-8.55-2.025-2.25Z' />
     </svg>
 )
-
+// ffffffcc
 export const TickIcon: React.FC = () => (
     <svg
         width={14}
         height={14}
         className='nD8iJ'
-        fill='#ffffffcc'
+        fill='currentColor'
         viewBox='0 0 24 24'
         version='1.1'
         aria-hidden='false'
@@ -149,5 +149,51 @@ export const UsersIcon: React.FC = () => (
     >
         <desc lang='en-US'>A group of people</desc>
         <path d='M23 17v3h-4v-3c0-1.7-1-2.9-2.3-3.9 2.7.4 6.3 1.7 6.3 3.9ZM9 12c2.2 0 4-1.8 4-4s-1.8-4-4-4-4 1.8-4 4 1.8 4 4 4Zm6 0c2.2 0 4-1.8 4-4s-1.8-4-4-4c-.5 0-.9.1-1.3.2C14.5 5.3 15 6.6 15 8s-.5 2.7-1.3 3.8c.4.1.8.2 1.3.2Zm-6 1c-2.7 0-8 1.3-8 4v3h16v-3c0-2.7-5.3-4-8-4Z' />
+    </svg>
+)
+
+export const ShareIcon: React.FC = () => (
+    <svg width={20} height={20} className='XzKLz' fill='#555' viewBox='0 0 24 24' version='1.1' aria-hidden='false'>
+        <desc lang='en-US'>A forward-right arrow</desc>
+        <path d='M13 20v-5.5c-5.556 0-8.222 1-11 5.5C2 13.25 5.222 8.625 13 7.5V2l9 9-9 9Z' />
+    </svg>
+)
+
+export const InfoIcon: React.FC = () => (
+    <svg width={20} height={20} className='VryqT' fill='#555' viewBox='0 0 24 24' version='1.1' aria-hidden='false'>
+        <desc lang='en-US'>Info icon</desc>
+        <path d='M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10 10-4.5 10-10S17.5 2 12 2Zm1.111 8.889v6.667H10.89v-6.667h2.222Zm0-4.445v2.223H10.89V6.444h2.222Z' />
+    </svg>
+)
+
+export const DotMoreIcon: React.FC = () => (
+    <svg width={20} height={20} className='RCM9S' fill='#555' viewBox='0 0 24 24' version='1.1' aria-hidden='false'>
+        <desc lang='en-US'>More Actions</desc>
+        <path d='M6 12c0 1.1-.9 2-2 2s-2-.9-2-2 .9-2 2-2 2 .9 2 2Zm14-2c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2Zm-8 0c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2Z' />
+    </svg>
+)
+
+export const LocationIcon: React.FC = () => (
+    <svg width={16} height={16} className='ywnoU' fill='#767676' viewBox='0 0 24 24' version='1.1' aria-hidden='false'>
+        <desc lang='en-US'>A map marker</desc>
+        <path d='M17.6 4.2C16 2.7 14.1 2 12 2s-4 .7-5.6 2.2C4.8 5.7 4 7.7 4 10.2c0 1.7.7 3.5 2 5.4 1.3 2 3.3 4.1 6 6.4 2.7-2.3 4.7-4.4 6-6.4 1.3-2 2-3.8 2-5.4 0-2.5-.8-4.5-2.4-6zm-1.1 10.1c-1 1.5-2.5 3.2-4.5 5.1-2-1.9-3.5-3.6-4.5-5.1-1-1.5-1.5-2.9-1.5-4.1 0-1.8.6-3.3 1.7-4.5C8.9 4.6 10.3 4 12 4s3.1.6 4.3 1.7c1.2 1.2 1.7 2.6 1.7 4.5 0 1.2-.5 2.5-1.5 4.1zm-2-4.3c0 1.4-1.1 2.5-2.5 2.5S9.5 11.4 9.5 10s1.1-2.5 2.5-2.5 2.5 1.1 2.5 2.5z' />
+    </svg>
+)
+export const PublishedIcon: React.FC = () => (
+    <svg width={16} height={16} className='ywnoU' fill='#767676' viewBox='0 0 24 24' version='1.1' aria-hidden='false'>
+        <desc lang='en-US'>Calendar outlined</desc>
+        <path d='M21 6v14c0 1.1-.9 2-2 2H5c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2h1V2h2v2h8V2h2v2h1c1.1 0 2 .9 2 2zM5 8h14V6H5v2zm14 12V10H5v10h14z' />
+    </svg>
+)
+export const CameraIcon: React.FC = () => (
+    <svg width={16} height={16} className='ywnoU' fill='#767676' viewBox='0 0 24 24' version='1.1' aria-hidden='false'>
+        <desc lang='en-US'>Camera</desc>
+        <path d='m14.12 4 1.83 2H20v12H4V6h4.05l1.83-2h4.24ZM15 2H9L7.17 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2h-3.17L15 2Zm-3 7c1.65 0 3 1.35 3 3s-1.35 3-3 3-3-1.35-3-3 1.35-3 3-3Zm0-2c-2.76 0-5 2.24-5 5s2.24 5 5 5 5-2.24 5-5-2.24-5-5-5Z' />
+    </svg>
+)
+export const LicenseIcon: React.FC = () => (
+    <svg width={16} height={16} className='ywnoU' fill='#767676' viewBox='0 0 24 24' version='1.1' aria-hidden='false'>
+        <desc lang='en-US'>Safety</desc>
+        <path d='m10 14.2 6.6-6.6L18 9l-8 8-4-4 1.4-1.4 2.6 2.6ZM21 5v6c0 5.5-3.8 10.7-9 12-5.2-1.3-9-6.5-9-12V5l9-4 9 4Zm-2 1.3-7-3.1-7 3.1V11c0 4.5 3 8.7 7 9.9 4-1.2 7-5.4 7-9.9V6.3Z' />
     </svg>
 )

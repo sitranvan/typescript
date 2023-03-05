@@ -1,11 +1,12 @@
 import { useContext } from 'react'
 import { Context, SearchContext } from '../../../contexts/searchContext'
 import SearchPage from '../SearchPage'
-import SearchCollectionsInfo from './SearchCollectionsInfo'
-import SearchCollectionsPreview from './SearchCollectionsPreview'
+
 import InfiniteScroll from 'react-infinite-scroll-component'
-import { PuffLoader } from 'react-spinners'
 import Skeleton from 'react-loading-skeleton'
+import { PuffLoader } from 'react-spinners'
+import CollectionsInfo from '../../../components/CollectionsInfo'
+import CollectionsPreview from '../../../components/CollectionsPreview'
 
 export default function SearchCollections() {
     const { collections, fetchCollections, loading }: Context = useContext(SearchContext)
@@ -22,12 +23,12 @@ export default function SearchCollections() {
                     {collections.length > 0 &&
                         collections.map((collection) => {
                             if (loading) {
-                                return <Skeleton height={300} />
+                                return <Skeleton key={collection.id} height={300} />
                             } else {
                                 return (
                                     <div key={collection.id} className=''>
-                                        <SearchCollectionsPreview collection={collection} />
-                                        <SearchCollectionsInfo collection={collection} />
+                                        <CollectionsPreview collection={collection} />
+                                        <CollectionsInfo collection={collection} />
                                     </div>
                                 )
                             }

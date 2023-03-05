@@ -1,4 +1,4 @@
-import { Collections, ListPhoto, Topics, UserPreview } from '../types'
+import { Collections, ListPhoto, Photo, Topics, UserPreview } from '../types'
 import { ListParams, ListResponseData, ListResponseResults } from './../types/api'
 import { unsplashRequest } from './../utils/httpRequest'
 
@@ -8,7 +8,7 @@ export const unsplashApi = {
         const response = await unsplashRequest.get(url, { params })
         return response
     },
-    getPhoto: async (id: string): Promise<ListPhoto> => {
+    getPhoto: async (id: string): Promise<Photo> => {
         const url: string = `/photos/${id}`
         const response = await unsplashRequest.get(url)
         return response.data
@@ -40,6 +40,11 @@ export const unsplashApi = {
     },
     getCollectionsPhotos: async (id: string, params: ListParams): Promise<ListResponseData<ListPhoto>> => {
         const url = `/collections/${id}/photos`
+        const response = await unsplashRequest.get(url, { params })
+        return response
+    },
+    getPhotoUsers: async (username: string, params: ListParams): Promise<ListResponseData<ListPhoto>> => {
+        const url = `/users/${username}/photos`
         const response = await unsplashRequest.get(url, { params })
         return response
     },

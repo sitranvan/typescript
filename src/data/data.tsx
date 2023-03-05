@@ -1,5 +1,14 @@
-import { CollectionsIcon, PhotosIcon, UsersIcon } from '../components/Icons'
-import { TotalRender } from '../types'
+import {
+    CollectionsIcon,
+    DotMoreIcon,
+    HeartIcon,
+    InfoIcon,
+    PhotosIcon,
+    PlusIcon,
+    ShareIcon,
+    UsersIcon,
+} from '../components/Icons'
+import { DetailAction, TotalRender } from '../types'
 import formatNumber from '../utils/formatNumber'
 
 export const totalList: TotalRender[] = [
@@ -20,5 +29,39 @@ export const totalList: TotalRender[] = [
         icon: <UsersIcon />,
         title: (payload: any) => formatNumber(payload),
         label: 'users',
+    },
+]
+
+export const actionList: DetailAction[] = [
+    {
+        children: <HeartIcon />,
+    },
+    {
+        children: <PlusIcon />,
+    },
+    {
+        children: <span className='text-gray76'>Download</span>,
+    },
+]
+
+export const detailMore: DetailAction[] = [
+    {
+        children: (
+            <span className='text-gray76 flex items-center gap-x-2 '>
+                <ShareIcon />
+                Share
+            </span>
+        ),
+    },
+    {
+        children: (
+            <span className='text-gray76 flex items-center gap-x-2 '>
+                <InfoIcon />
+                Info
+            </span>
+        ),
+    },
+    {
+        children: <DotMoreIcon />,
     },
 ]

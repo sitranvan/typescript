@@ -12,13 +12,15 @@ import TitleSlider from '../../components/TitleSlider'
 export default function HomePage() {
     const [photos, setPhotos] = useState<ListPhoto[]>([])
     const [page, setPage] = useState<number>(1)
-
+    const [loading, setLoading] = useState<boolean>(false)
     const fetchData = async () => {
         try {
+            setLoading(true)
             const data = await unsplashApi.getList({ page })
             const newPhoto = [...photos, ...data.data]
             setPhotos(newPhoto)
             setPage(page + 1)
+            setLoading(false)
         } catch (error) {
             console.log(error)
         }
@@ -45,7 +47,7 @@ export default function HomePage() {
                     loader={<PuffLoader className='mx-auto mt-5' color='#767676' />}
                 >
                     <div className='grid-photo'>
-                        <PhotoList photos={photos} />
+                        <PhotoList photos={photos} loading={loading} />
                     </div>
                 </InfiniteScroll>
             </div>

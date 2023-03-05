@@ -4,3 +4,7 @@ export interface TotalRender {
     title: any
     label: string
 }
+
+export interface DetailAction {
+    children: JSX.Element
+}

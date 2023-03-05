@@ -1,13 +1,11 @@
-import { useContext } from 'react'
 import { useNavigate } from 'react-router-dom'
-import { Context, SearchContext } from '../../../contexts/searchContext'
-import { Collections } from '../../../types'
+import { Collections } from '../../types'
 
-export interface SearchCollectionsInfoProps {
+export interface CollectionsInfoProps {
     collection: Collections
 }
 
-export default function SearchCollectionsInfo({ collection }: SearchCollectionsInfoProps) {
+export default function CollectionsInfo({ collection }: CollectionsInfoProps) {
     const navigate = useNavigate()
     const handleSearchTags = (title: string) => {
         navigate(`/s/photos/${title}`)
