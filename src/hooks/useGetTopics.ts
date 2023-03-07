@@ -6,8 +6,12 @@ export default function useGetTopics() {
     const [topics, setTopics] = useState<Topics[]>([])
 
     const fetchData = async () => {
-        const data = await unsplashApi.getTopics({ per_page: 10 })
-        setTopics(data.data)
+        try {
+            const data = await unsplashApi.getTopics({ per_page: 10 })
+            setTopics(data.data)
+        } catch (error) {
+            console.log(error)
+        }
     }
 
     useEffect(() => {

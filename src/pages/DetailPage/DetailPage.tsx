@@ -45,7 +45,7 @@ export default function DetailPage() {
     useEffect(() => {
         const fetchData = async () => {
             if (!idUser) return
-            const data = await unsplashApi.getPhotoUsers(idUser, { per_page: 30, page: 1 })
+            const data = await unsplashApi.getPhotosUser(idUser, { per_page: 30, page: 1 })
             const randomData = data.data
                 .slice(0) // tạo một bản sao của mảng ban đầu
                 .sort(() => Math.random() - 0.5) // sắp xếp ngẫu nhiên
@@ -73,7 +73,7 @@ export default function DetailPage() {
                         onClick={handleZoomImg}
                         src={photo?.urls.regular}
                         alt={photo?.alt_description}
-                        className={`rounded-md mx-auto w-[450px]  h-[550px] cursor-zoom-in ${
+                        className={`rounded-md mx-auto w-[450px] h-[550px] cursor-zoom-in ${
                             zoomImg && 'w-full h-full cursor-zoom-out'
                         }`}
                     />

@@ -1,4 +1,4 @@
-import { useNavigate } from 'react-router-dom'
+import { NavLink } from 'react-router-dom'
 import { Photo } from '../../types'
 import ButtonActions from '../ButtonActions'
 import { DownIcon, HeartIcon, PlusIcon } from '../Icons'
@@ -9,14 +9,10 @@ export interface PhotoItemProps {
 }
 
 export default function PhotoItem({ photo }: PhotoItemProps) {
-    const navigate = useNavigate()
-    const handleNavigateDetail = (id: string) => {
-        navigate(`/photos/${id}`)
-    }
-
     return (
-        <div className='relative grid-photo-group cursor-pointer' onClick={() => handleNavigateDetail(photo.id)}>
-            <img src={photo.urls.small} alt='' className='h-full w-full' />
+        <NavLink to={`/photos/${photo?.id}`} className='relative grid-photo-group cursor-pointer '>
+            <img src={photo?.urls.small} alt='' className='h-full w-full' />
+
             <div className='absolute inset-0 bg-black11 bg-opacity-30 flex flex-col justify-between grid-photo-content'>
                 <div className='flex items-center gap-x-2 justify-end m-4'>
                     <ButtonActions>
@@ -33,6 +29,6 @@ export default function PhotoItem({ photo }: PhotoItemProps) {
                     </ButtonActions>
                 </div>
             </div>
-        </div>
+        </NavLink>
     )
 }

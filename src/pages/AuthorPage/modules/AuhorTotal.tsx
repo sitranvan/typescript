@@ -1,22 +1,28 @@
-import { useContext } from 'react'
-import { NavLink, useParams } from 'react-router-dom'
-import { Context, SearchContext } from '../../../contexts/searchContext'
-import { totalList } from '../../../data'
 import Skeleton from 'react-loading-skeleton'
-import 'react-loading-skeleton/dist/skeleton.css'
-export default function TotalResults() {
-    const { keyword } = useParams<string>()
-    const { totals, loading }: Context = useContext(SearchContext)
+import { NavLink, useParams } from 'react-router-dom'
+import { totalListUser } from '../../../data'
+import queryString from 'query-string'
+
+export interface AuthorTotalProps {
+    totals: []
+    loading: boolean
+}
+
+export default function AuthorTotal({ totals, loading }: AuthorTotalProps) {
+    const { username } = useParams<string>()
     const totalsArray = Object.values(totals).map((value) => {
         return value
     })
 
     return (
-        <div className='flex items-center gap-x-6 h-full'>
-            {totalList.map((total, index) => (
+        <div
+            className='h-[56px] shadow-[inset_0_-1px_#d1d1d1] flex items-center gap-x-8 px-8 w-[100vw] 
+                    relative left-[calc(-50vw+50%)]'
+        >
+            {totalListUser.map((total, index) => (
                 <NavLink
-                    key={index}
-                    to={total.path(keyword)}
+                    key={total.label}
+                    to={`${total.path(username)}/${total.url}`}
                     className={({ isActive }) =>
                         isActive
                             ? ' h-full border-b-[3px] text-black11 border-black11 flex items-center'

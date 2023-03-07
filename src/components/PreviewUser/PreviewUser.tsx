@@ -1,5 +1,5 @@
+import { NavLink } from 'react-router-dom'
 import { UserPreview } from '../../types'
-import Button from '../Button'
 
 export interface PreviewUserProps {
     user: UserPreview
@@ -30,9 +30,12 @@ export default function PreviewUser({ user }: PreviewUserProps) {
                         />
                     ))}
             </div>
-            <Button className='w-full bg-transparent border border-grayD1 transition-all hover:border-black11 '>
+            <NavLink
+                to={`/@/user/${user.username}/photos`}
+                className='w-full bg-transparent border flex justify-center items-center border-grayD1 transition-all px-3 leading-8 rounded-md bg-grayEe text-gray76 hover:border-black11 hover:text-black11 '
+            >
                 View profile
-            </Button>
+            </NavLink>
         </div>
     )
 }

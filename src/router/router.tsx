@@ -1,14 +1,19 @@
 import { createBrowserRouter } from 'react-router-dom'
-import MainLayout from '../layouts/MainLayout'
-import HomePage from '../pages/HomePage'
-import TopicsPage from '../pages/TopicsPage'
-import AuthorPage from '../pages/AuthorPage'
-import OnlyHeaderLayout from '../layouts/OnlyHeaderLayout'
-import SearchPhotos from '../pages/SearchPage/modules/SearchPhotos'
-import SearchCollections from '../pages/SearchPage/modules/SearchCollections'
 import SearchProvider from '../contexts/searchContext'
-import SearchUsers from '../pages/SearchPage/modules/SearchUsers'
+import AuthorLayout from '../layouts/AuthorLayout'
+import MainLayout from '../layouts/MainLayout'
+import OnlyHeaderLayout from '../layouts/OnlyHeaderLayout'
+import CollectionsPage from '../pages/CollectionsPage'
 import DetailPage from '../pages/DetailPage'
+import HomePage from '../pages/HomePage'
+import SearchCollections from '../pages/SearchPage/modules/SearchCollections'
+import SearchPhotos from '../pages/SearchPage/modules/SearchPhotos'
+import SearchUsers from '../pages/SearchPage/modules/SearchUsers'
+import TopicsPage from '../pages/TopicsPage'
+import AuthorPhotos from '../pages/AuthorPage/modules/AuthorPhotos'
+import AuthorLike from '../pages/AuthorPage/modules/AuthorLikes'
+import AuthorCollections from '../pages/AuthorPage/modules/AuthorCollections'
+import AuthorProvider from '../contexts/authorContext'
 
 export const router = createBrowserRouter([
     {
@@ -23,8 +28,25 @@ export const router = createBrowserRouter([
                 element: <TopicsPage />,
             },
             {
-                path: '/@/:user',
-                element: <AuthorPage />,
+                element: (
+                    <AuthorProvider>
+                        <AuthorLayout />
+                    </AuthorProvider>
+                ),
+                children: [
+                    {
+                        path: '/@/user/:username/photos',
+                        element: <AuthorPhotos />,
+                    },
+                    {
+                        path: '/@/user/:username/likes',
+                        element: <AuthorLike />,
+                    },
+                    {
+                        path: '/@/user/:username/collections',
+                        element: <AuthorCollections />,
+                    },
+                ],
             },
         ],
     },
@@ -50,6 +72,10 @@ export const router = createBrowserRouter([
             {
                 path: '/photos/:id',
                 element: <DetailPage />,
+            },
+            {
+                path: '/collections/:id/:title',
+                element: <CollectionsPage />,
             },
         ],
     },

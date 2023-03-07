@@ -62,5 +62,10 @@
 
 .infinite-scroll-component::-webkit-scrollbar {
     display: none;
+
 }
 
+.bg-gradient {
+    background-image: linear-gradient(to top, white, rgba(255, 255, 255, 0.6));
+
+}

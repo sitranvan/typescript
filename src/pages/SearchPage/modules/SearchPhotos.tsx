@@ -1,26 +1,20 @@
 import { useContext } from 'react'
 import InfiniteScroll from 'react-infinite-scroll-component'
-import { PuffLoader } from 'react-spinners'
+import NoInfo from '../../../components/NoInfo'
+import PhotoList from '../../../components/PhotoList'
 import { Context, SearchContext } from '../../../contexts/searchContext'
 import SearchPage from '../SearchPage'
-import PhotoList from '../../../components/PhotoList'
 
-export interface SearchPhotosProps {}
-
-export default function SearchPhotos(props: SearchPhotosProps) {
+export default function SearchPhotos() {
     const { photos, fetchPhotos, loading }: Context = useContext(SearchContext)
 
     return (
         <SearchPage>
-            <InfiniteScroll
-                dataLength={photos.length}
-                next={fetchPhotos}
-                hasMore={true}
-                loader={<PuffLoader className='mx-auto mt-5' color='#767676' />}
-            >
+            <InfiniteScroll dataLength={photos.length} next={fetchPhotos} hasMore={true} loader={''}>
                 <div className='grid-photo'>
                     <PhotoList photos={photos} loading={loading} />
                 </div>
+                {photos.length <= 0 && <NoInfo />}
             </InfiniteScroll>
         </SearchPage>
     )

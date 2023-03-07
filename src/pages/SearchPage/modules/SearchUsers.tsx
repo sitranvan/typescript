@@ -1,22 +1,17 @@
 import { useContext } from 'react'
-import PreviewUser from '../../../components/PreviewUser'
-import SearchPage from '../SearchPage'
-import { Context, SearchContext } from '../../../contexts/searchContext'
 import InfiniteScroll from 'react-infinite-scroll-component'
-import { PuffLoader } from 'react-spinners'
 import Skeleton from 'react-loading-skeleton'
+import PreviewUser from '../../../components/PreviewUser'
+import { Context, SearchContext } from '../../../contexts/searchContext'
+import SearchPage from '../SearchPage'
+import NoInfo from '../../../components/NoInfo/NoInfo'
 
 export default function SearchUsers() {
     const { users, fetchUsers, loading }: Context = useContext(SearchContext)
 
     return (
         <SearchPage>
-            <InfiniteScroll
-                dataLength={users.length}
-                next={fetchUsers}
-                hasMore={true}
-                loader={<PuffLoader className='mx-auto mt-5' color='#767676' />}
-            >
+            <InfiniteScroll dataLength={users.length} next={fetchUsers} hasMore={true} loader={''}>
                 <div className='grid grid-cols-3 gap-6'>
                     {users.length > 0 &&
                         users.map((user) => {
@@ -27,6 +22,7 @@ export default function SearchUsers() {
                             }
                         })}
                 </div>
+                {users.length <= 0 && <NoInfo />}
             </InfiniteScroll>
         </SearchPage>
     )

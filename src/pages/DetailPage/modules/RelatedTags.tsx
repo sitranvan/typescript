@@ -1,5 +1,5 @@
 import Skeleton from 'react-loading-skeleton'
-import { useNavigate } from 'react-router-dom'
+import TagName from '../../../components/TagName'
 import { Photo } from '../../../types'
 
 export interface RelatedTagsProps {
@@ -8,7 +8,6 @@ export interface RelatedTagsProps {
 }
 
 export default function RelatedTags({ photo, loading }: RelatedTagsProps) {
-    const navigate = useNavigate()
     return (
         <div className='mb-20'>
             <div className='flex items-center flex-wrap gap-2'>
@@ -20,13 +19,9 @@ export default function RelatedTags({ photo, loading }: RelatedTagsProps) {
                                 return <Skeleton key={tag.title} width={60} height={26} />
                             } else {
                                 return (
-                                    <span
-                                        key={tag.title}
-                                        onClick={() => navigate(`/s/photos/${tag.title}`)}
-                                        className='leading-[26px] text-gray76 bg-grayEe inline-block px-2 rounded-sm hover:text-black11 transition-all cursor-pointer'
-                                    >
+                                    <TagName key={tag.title} to={`/s/photos/${tag.title}`}>
                                         {tag.title}
-                                    </span>
+                                    </TagName>
                                 )
                             }
                         }),

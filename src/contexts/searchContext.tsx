@@ -1,7 +1,7 @@
 import React, { createContext, useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
 import { unsplashApi } from '../api/unsplashApi'
-import { Collections, ListPhoto, TotalApi, User, UserPreview } from '../types'
+import { Collections, ListPhoto, TotalApi, UserPreview } from '../types'
 
 export interface SearchProviderProps {
     children: JSX.Element
@@ -24,7 +24,7 @@ export interface Context {
 export const SearchContext = createContext<Context | any>(undefined)
 
 export default function SearchProvider({ children }: SearchProviderProps) {
-    const { keyword } = useParams()
+    const { keyword } = useParams<string>()
     const [value, setValue] = useState<string>('')
     const [pagePhotos, setPagePhotos] = useState<number>(2)
     const [pageCollections, setPageCollections] = useState<number>(2)
@@ -42,21 +42,20 @@ export default function SearchProvider({ children }: SearchProviderProps) {
         try {
             e?.preventDefault()
             setLoading(true)
-            // api search photos
-            const dataPhotos = await unsplashApi.searchPhotos({ query: value || keyword, per_page: 6, page: 1 })
+            const [dataPhotos, dataCollections, dataUser] = await Promise.all([
+                unsplashApi.searchPhotos({ query: value || keyword, per_page: 6, page: 1 }),
+                unsplashApi.searchCollections({
+                    query: value || keyword,
+                    per_page: 6,
+                    page: 1,
+                }),
+                unsplashApi.searchUsers({ query: value || keyword, per_page: 10, page: 1 }),
+            ])
+
             setPhotos(dataPhotos.results)
-            // api search collections
-            const dataCollections = await unsplashApi.searchCollections({
-                query: value || keyword,
-                per_page: 6,
-                page: 1,
-            })
+
             setCollections(dataCollections.results)
 
-            // api get a collection’s photos
-            // const data = await unsplashApi.getCollectionsPhotos('599017', {})
-            // api search users
-            const dataUser = await unsplashApi.searchUsers({ query: value || keyword, page: 1, per_page: 6 })
             setUsers(dataUser.results)
 
             const newTotal: TotalApi = {
@@ -72,26 +71,42 @@ export default function SearchProvider({ children }: SearchProviderProps) {
     }
 
     const fetchPhotos = async () => {
-        if (!keyword) return
-        const dataPhotos = await unsplashApi.searchPhotos({ query: keyword, per_page: 6, page: pagePhotos })
-        const newPhotos = [...photos, ...dataPhotos.results]
-        setPhotos(newPhotos)
-        setPagePhotos(pagePhotos + 1)
+        try {
+            if (!keyword) return
+            const dataPhotos = await unsplashApi.searchPhotos({ query: keyword, per_page: 6, page: pagePhotos })
+            const newPhotos = [...photos, ...dataPhotos.results]
+            setPhotos(newPhotos)
+            setPagePhotos(pagePhotos + 1)
+        } catch (error) {
+            console.log(error)
+        }
     }
     const fetchCollections = async () => {
-        if (!keyword) return
-        const dataPhotos = await unsplashApi.searchCollections({ query: keyword, per_page: 6, page: pageCollections })
-        const newCollections = [...collections, ...dataPhotos.results]
-        setCollections(newCollections)
-        setPageCollections(pageCollections + 1)
+        try {
+            if (!keyword) return
+            const dataPhotos = await unsplashApi.searchCollections({
+                query: keyword,
+                per_page: 6,
+                page: pageCollections,
+            })
+            const newCollections = [...collections, ...dataPhotos.results]
+            setCollections(newCollections)
+            setPageCollections(pageCollections + 1)
+        } catch (error) {
+            console.log(error)
+        }
     }
 
     const fetchUsers = async () => {
-        if (!keyword) return
-        const dataUsers = await unsplashApi.searchUsers({ query: keyword, per_page: 6, page: pageUsers })
-        const newUsers = [...users, ...dataUsers.results]
-        setUsers(newUsers)
-        setPageUsers(pageUsers + 1)
+        try {
+            if (!keyword) return
+            const dataUsers = await unsplashApi.searchUsers({ query: keyword, per_page: 10, page: pageUsers })
+            const newUsers = [...users, ...dataUsers.results]
+            setUsers(newUsers)
+            setPageUsers(pageUsers + 1)
+        } catch (error) {
+            console.log(error)
+        }
     }
 
     useEffect(() => {

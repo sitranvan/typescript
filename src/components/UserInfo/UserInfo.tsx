@@ -1,9 +1,10 @@
-import { Photo } from '../../types'
+import { ListPhoto, Photo } from '../../types'
 import { TickIcon } from '../Icons'
 
 export interface UserInfoProps {
-    photo: Photo | undefined
+    photo: Photo | ListPhoto | undefined
     gray?: boolean
+    black11?: boolean
 }
 
 export default function UserInfo({ photo, gray }: UserInfoProps) {
@@ -14,6 +15,7 @@ export default function UserInfo({ photo, gray }: UserInfoProps) {
                 alt={photo?.user.username}
                 className='w-[32px] h-[32px] object-cover rounded-full'
             />
+
             {gray ? (
                 <div className='flex flex-col text-white text-opacity-80 gap-y-[1px]'>
                     <span className='text-[15px] inline-block font-medium leading-none'>
