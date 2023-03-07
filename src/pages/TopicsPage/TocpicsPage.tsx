@@ -71,7 +71,7 @@ export default function TopicsPage() {
                     </Button>
                 </Fragment>
             </Slider>
-            <div className='mt-[50px]  w-[1280px] mx-auto px-8'>
+            <div className='mt-[50px] w-[1280px] max-w-[100%] mx-auto px-8'>
                 <InfiniteScroll
                     dataLength={photosTopic.length}
                     next={fetchData}

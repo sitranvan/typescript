@@ -1,19 +1,22 @@
+import React from 'react'
 import { createBrowserRouter } from 'react-router-dom'
 import SearchProvider from '../contexts/searchContext'
-import AuthorLayout from '../layouts/AuthorLayout'
-import MainLayout from '../layouts/MainLayout'
-import OnlyHeaderLayout from '../layouts/OnlyHeaderLayout'
-import CollectionsPage from '../pages/CollectionsPage'
-import DetailPage from '../pages/DetailPage'
-import HomePage from '../pages/HomePage'
-import SearchCollections from '../pages/SearchPage/modules/SearchCollections'
-import SearchPhotos from '../pages/SearchPage/modules/SearchPhotos'
-import SearchUsers from '../pages/SearchPage/modules/SearchUsers'
-import TopicsPage from '../pages/TopicsPage'
-import AuthorPhotos from '../pages/AuthorPage/modules/AuthorPhotos'
-import AuthorLike from '../pages/AuthorPage/modules/AuthorLikes'
-import AuthorCollections from '../pages/AuthorPage/modules/AuthorCollections'
 import AuthorProvider from '../contexts/authorContext'
+
+const AuthorLayout = React.lazy(() => import('../layouts/AuthorLayout'))
+const MainLayout = React.lazy(() => import('../layouts/MainLayout'))
+const OnlyHeaderLayout = React.lazy(() => import('../layouts/OnlyHeaderLayout'))
+const CollectionsPage = React.lazy(() => import('../pages/CollectionsPage'))
+const DetailPage = React.lazy(() => import('../pages/DetailPage'))
+const HomePage = React.lazy(() => import('../pages/HomePage'))
+const SearchCollections = React.lazy(() => import('../pages/SearchPage/modules/SearchCollections'))
+const SearchPhotos = React.lazy(() => import('../pages/SearchPage/modules/SearchPhotos'))
+const SearchUsers = React.lazy(() => import('../pages/SearchPage/modules/SearchUsers'))
+const TopicsPage = React.lazy(() => import('../pages/TopicsPage'))
+const AuthorPhotos = React.lazy(() => import('../pages/AuthorPage/modules/AuthorPhotos'))
+const AuthorLike = React.lazy(() => import('../pages/AuthorPage/modules/AuthorLikes'))
+const AuthorCollections = React.lazy(() => import('../pages/AuthorPage/modules/AuthorCollections'))
+const NotFound = React.lazy(() => import('../components/NotFound'))
 
 export const router = createBrowserRouter([
     {
@@ -78,5 +81,9 @@ export const router = createBrowserRouter([
                 element: <CollectionsPage />,
             },
         ],
+    },
+    {
+        path: '*',
+        element: <NotFound />,
     },
 ])

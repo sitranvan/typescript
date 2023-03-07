@@ -8,6 +8,7 @@ import AuthorProvider from './contexts/authorContext'
 
 const root = ReactDOM.createRoot(document.getElementById('root') as HTMLElement)
 
+
 Modal.setAppElement('#root')
 root.render(
     <AuthorProvider>

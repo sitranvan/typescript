@@ -31,7 +31,7 @@ export default function CollectionsPage() {
     }, [])
 
     return (
-        <div className='w-[1280px] mx-auto px-8'>
+        <div className='w-[1280px] max-w-[100%] mx-auto px-8'>
             <Banner photo={photos[0]} />
             <InfiniteScroll dataLength={photos.length} next={fetchData} hasMore={true} loader={''}>
                 <div className='grid-photo'>

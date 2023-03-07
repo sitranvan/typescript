@@ -1,16 +1,30 @@
 import { RouterProvider } from 'react-router-dom'
 import { router } from './router'
-
+import React, { Suspense, useEffect, useState } from 'react'
+import { PacmanLoader } from 'react-spinners'
+const NotResponsive = React.lazy(() => import('./components/NotResponsive'))
 function App() {
-    // useEffect(() => {
-    //     const fetchData = async () => {
-    //         const dataUserPhoto = await unsplashApi.getPhotoUsers('joshhild', { per_page: 3 })
+    const [windowWidth, setWindowWidth] = useState(window.innerWidth)
 
-    //         console.log('fetchData ~ dataUserPhoto:', dataUserPhoto.data[0].urls.regular)
-    //     }
-    //     fetchData()
-    // }, [])
-    return <RouterProvider router={router} />
+    useEffect(() => {
+        const handleResize = () => setWindowWidth(window.innerWidth)
+        window.addEventListener('resize', handleResize)
+        return () => window.removeEventListener('resize', handleResize)
+    }, [])
+
+    return windowWidth > 1024 ? (
+        <Suspense
+            fallback={
+                <div className='w-screen h-screen flex items-center justify-center text-gray76'>
+                    <PacmanLoader color='#86E7D4' />
+                </div>
+            }
+        >
+            <RouterProvider router={router} />
+        </Suspense>
+    ) : (
+        <NotResponsive />
+    )
 }
 
 export default App

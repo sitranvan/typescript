@@ -56,7 +56,7 @@ export default function DetailPage() {
     }, [idUser, id])
 
     return (
-        <div className='w-[1280px] mx-auto px-8'>
+        <div className='w-[1280px] max-w-[100%] mx-auto px-8'>
             <div className='py-3 flex items-center justify-between'>
                 {loading ? <Skeleton height={32} width={100} /> : <UserInfo photo={photo} />}
                 <div className='flex items-center gap-x-2'>

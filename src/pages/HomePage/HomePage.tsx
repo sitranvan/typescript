@@ -38,7 +38,7 @@ export default function HomePage() {
                     <Search className='h-[54px]' />
                 </Fragment>
             </Slider>
-            <div className='w-[1280px] mx-auto px-8'>
+            <div className='w-[1280px] max-w-[100%] mx-auto px-8'>
                 <Banner />
                 <InfiniteScroll
                     dataLength={photos.length}

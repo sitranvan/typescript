@@ -52,7 +52,7 @@ function App() {
                     console.error(error)
                 })
         }
-    }, [authorizationCode])
+    }, [authorizationCode, clientId, clientSecret])
 
     return (
         <div>

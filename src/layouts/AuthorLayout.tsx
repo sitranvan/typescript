@@ -36,8 +36,8 @@ export default function AuthorPage() {
     }, [username])
 
     return (
-        <div className='w-[1280px] mx-auto px-8'>
-            <AuthorInfo user={userInfo} />
+        <div className='w-[1280px] max-w-[100%] mx-auto px-8'>
+            <AuthorInfo loading={loading} user={userInfo} />
             <AuthorTotal loading={loading} totals={totals} />
             <div className='mt-14'>
                 <Outlet />

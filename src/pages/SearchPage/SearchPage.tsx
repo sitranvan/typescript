@@ -15,7 +15,7 @@ export default function SearchPage({ children }: SearchPageProps) {
             >
                 <TotalResults />
             </div>
-            <div className='w-[1320px] px-5 py-10 mx-auto'>
+            <div className='w-[1320px] max-w-[100%] px-5 py-10 mx-auto'>
                 <h1 className='text-[28px] text-black11 font-bold mb-10 capitalize'>{keyword}</h1>
                 {children}
             </div>

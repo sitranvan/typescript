@@ -65,6 +65,7 @@ export default function SearchProvider({ children }: SearchProviderProps) {
             }
             setTotals(newTotal)
             setLoading(false)
+            setValue('')
         } catch (error) {
             console.log(error)
         }
